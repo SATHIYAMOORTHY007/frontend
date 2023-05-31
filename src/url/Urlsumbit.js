@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 import Cookies from 'js-cookie'
 function Urlsumbit() {
-  const token = window.sessionStorage.getItem('access_token')
+  /*   const token = window.sessionStorage.getItem('access_token') */
+
   const [loading, setLoading] = useState(false)
   const myformik = useFormik({
     initialValues: {
@@ -21,7 +22,7 @@ function Urlsumbit() {
           values,
           {
             headers: {
-              access_token: token,
+              access_token: window.localStorage.getItem('Access_token'),
             },
           },
         )

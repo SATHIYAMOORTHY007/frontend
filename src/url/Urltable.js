@@ -5,14 +5,11 @@ function Urltable() {
   const [value, SetValue] = useState('')
   const getdata = async () => {
     try {
-      const values = await axios.get(
-        'https://passwordrestflow.onrender.com/auth/getall',
-        {
-          headers: {
-            access_token: window.sessionStorage.getItem('access_token'),
-          },
+      const values = await axios.get('http:localhost:4768/auth/getall', {
+        headers: {
+          access_token: window.sessionStorage.getItem('Access_token'),
         },
-      )
+      })
       SetValue(values.data)
     } catch {
       alert('not auth')
