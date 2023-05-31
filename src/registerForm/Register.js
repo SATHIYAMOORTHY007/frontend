@@ -36,7 +36,7 @@ function Register() {
       setloading(true)
       try {
         const value = await axios.post(
-          'http://localhost:4768/auth/register/',
+          'https://passwordrestflow.onrender.com/auth/register/',
           values,
         )
         if (value.data.message) {

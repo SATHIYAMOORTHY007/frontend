@@ -21,7 +21,7 @@ function Forgetpassword() {
     },
     onSubmit: async (values) => {
       const value = await axios.post(
-        `http://localhost:4768/auth/forgetpassword/`,
+        `https://passwordrestflow.onrender.com/auth/forgetpassword/`,
         values,
       )
       console.log('values', value)
