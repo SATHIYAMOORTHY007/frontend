@@ -7,7 +7,7 @@ function Urltable() {
     try {
       const values = await axios.get('http:localhost:4768/auth/getall', {
         headers: {
-          access_token: window.sessionStorage.getItem('Access_token'),
+          Access_token: window.sessionStorage.getItem('Access_token'),
         },
       })
       SetValue(values.data)
