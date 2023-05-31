@@ -1,20 +1,25 @@
 import React, { useState } from 'react'
 import './register.css'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { Formik, useFormik } from 'formik'
 import axios from 'axios'
 
 function Register() {
   const [loading, setloading] = useState(false)
   const navigator = useNavigate()
+
   const [data, setData] = useState('')
   const myformik = useFormik({
     initialValues: {
+      username: '',
       email_id: '',
       pwd: '',
     },
     validate: (values) => {
       let errors = {}
+      if (!values.username) {
+        errors.username = 'please enter your name'
+      }
       if (!values.email_id) {
         errors.email_id = 'please enter your email'
       } else if (
@@ -56,6 +61,26 @@ function Register() {
       <div style={{ textAlign: 'center', fontSize: '2em' }}>Register Form</div>
       <div className="register-from">
         <form onSubmit={myformik.handleSubmit}>
+          <div className="row ">
+            <div className="col-2">
+              <label htmlFor="name" className="form-label">
+                Name
+              </label>
+            </div>
+            <div className="col-4 ">
+              <input
+                type="text"
+                placeholder=""
+                className={`form-control ${
+                  myformik.errors.username ? 'is-invalid' : 'is-valid'
+                }`}
+                onChange={myformik.handleChange}
+                values={myformik.values.username}
+                name="username"
+              />
+              <span style={{ color: 'red' }}>{myformik.errors.username}</span>
+            </div>
+          </div>
           <div className="row form-row">
             <div className="col-2">
               <lable forhtml="email_id">E-mail</lable>
@@ -105,7 +130,6 @@ function Register() {
               </button>
             </div>
           </div>
-          <h3>{data}</h3>
         </form>
       </div>
     </>
