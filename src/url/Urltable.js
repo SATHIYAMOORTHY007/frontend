@@ -10,7 +10,7 @@ function Urltable() {
         'https://passwordrestflow.onrender.com/auth/getall',
         {
           headers: {
-            Access_token: window.sessionStorage.getItem('access_token'),
+            Access_token: window.sessionStorage.getItem('Access_token'),
           },
         },
       )

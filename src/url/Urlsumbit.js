@@ -17,14 +17,13 @@ function Urlsumbit() {
       if (!values.longurl) return (error.longurl = 'url need')
     },
     onSubmit: async (values) => {
-      console.log(window.localStorage.getItem('access_token'))
       try {
         const data = await axios.post(
           'https://passwordrestflow.onrender.com/auth/create',
           values,
           {
             headers: {
-              Access_token: window.sessionStorage.getItem('access_token'),
+              Access_token: window.sessionStorage.getItem('Access_token'),
             },
           },
         )

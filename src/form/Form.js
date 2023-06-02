@@ -33,7 +33,7 @@ function Form() {
         )
 
         const token = value.data.token
-        window.sessionStorage.setItem('access_token', token)
+        window.sessionStorage.setItem('Access_token', token)
         navigator('/url/submit')
       } catch (error) {
         setData(error.response.data)
