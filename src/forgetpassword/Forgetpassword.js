@@ -24,7 +24,7 @@ function Forgetpassword() {
         `https://passwordrestflow.onrender.com/auth/forgetpassword/`,
         values,
       )
-      console.log('values', value)
+
       setData(value.data)
     },
   })

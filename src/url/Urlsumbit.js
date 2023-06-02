@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Formik, useFormik } from 'formik'
 import { Link } from 'react-router-dom'
+import { Navigate, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import Cookies from 'js-cookie'
 function Urlsumbit() {
@@ -16,28 +17,47 @@ function Urlsumbit() {
       if (!values.longurl) return (error.longurl = 'url need')
     },
     onSubmit: async (values) => {
+      console.log(window.localStorage.getItem('access_token'))
       try {
         const data = await axios.post(
           'https://passwordrestflow.onrender.com/auth/create',
           values,
           {
             headers: {
-              Access_token: window.localStorage.getItem('Access_token'),
+              Access_token: window.sessionStorage.getItem('access_token'),
             },
           },
         )
 
         myformik.values.longurl = ''
-        console.log(data)
+        alert('submit successfully')
       } catch (error) {
         console.log(error)
       }
     },
   })
-
+  const navigator = useNavigate()
+  function log() {
+    window.sessionStorage.clear('access_token')
+    navigator('/')
+  }
   return (
     <>
       <div className="row wrapper ">
+        <>
+          <div className="row position-relative">
+            <div className="col position-absolute top-50 start-100 translate-middle">
+              <button
+                className="btn btn-danger "
+                onClick={() => {
+                  log()
+                }}
+              >
+                Logout
+              </button>
+            </div>
+          </div>
+        </>
         <form onSubmit={myformik.handleSubmit}>
           <div class="input-group mb-3">
             <div className="col-4">

@@ -31,9 +31,9 @@ function Form() {
           'https://passwordrestflow.onrender.com/auth/login/',
           values,
         )
-        let token = value.data.details.token
 
-        window.sessionStorage.setItem('Access_token', token)
+        const token = value.data.token
+        window.sessionStorage.setItem('access_token', token)
         navigator('/url/submit')
       } catch (error) {
         setData(error.response.data)

@@ -13,7 +13,7 @@ import Cookies from 'js-cookie'
 import { useEffect } from 'react'
 
 function Auth({ children }) {
-  const token = window.sessionStorage.getItem('Access_token')
+  const token = window.sessionStorage.getItem('access_token')
 
   if (!token) {
     return <Navigate to="/" />
