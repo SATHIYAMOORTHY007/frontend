@@ -39,18 +39,17 @@ function Register() {
           'https://passwordrestflow.onrender.com/auth/register/',
           values,
         )
-        if (value.data.message) {
-          setData(value.data.message)
-          setloading(false)
-          navigator('/register')
+        if (value.data.message === 'already existing..') {
+          alert('already existing..')
         } else {
           setData(value.data.message)
+          alert('success')
           setloading(false)
           navigator('/')
         }
       } catch (error) {
         setData(error.response.data.message)
-        console.log('error ', error.response.data.message)
+        alert(error.response.data.message)
         setloading(false)
       }
     },
